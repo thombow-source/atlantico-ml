@@ -1,0 +1,18 @@
+# Python Virtual Environments
+.atlantic_ML/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Generierte ML-Artefakte & Datensätze 
+# (werden lokal erzeugt, gehören nicht ins GitHub-Repo)
+segmentation_pipeline.pkl
+data_clustered.csv
+
+# VS Code Einstellungen
+.vscode/
+
+# OS spezifische Dateien
+.DS_Store
+Thumbs.db
