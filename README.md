@@ -23,9 +23,11 @@ atlantico-ml/
 ```bash
 python -m venv .atlantic_ML
 .atlantic_ML\Scripts\activate
+```
 2. **Abhängigkeiten installieren:**
 ```bash
 pip install -r requirements.txt
+```
 ## 🚀 Ausführung & Reproduktion
 Um das Modell von Grund auf neu zu trainieren und die App zu starten, folge diesen Schritten:
 1. Explorative Analyse ansehen (optional):Öffne eda.ipynb, um die Verteilung und Schiefe der Ausgabekategorien zu untersuchen.Modellierung & 
@@ -38,3 +40,4 @@ Um das Modell von Grund auf neu zu trainieren und die App zu starten, folge dies
 3. **Streamlit-App starten:**
 ```bash
 streamlit run app.py
+```
