@@ -19,12 +19,12 @@ atlantico-ml/
    ```bash
    git clone [https://github.com/thombow-source/atlantico-ml.git](https://github.com/thombow-source/atlantico-ml.git)
    cd atlantico-ml
-* Virtuelle Umgebung erstellen und aktivieren:
+2. **Virtuelle Umgebung erstellen und aktivieren:**
 ```bash
 python -m venv .atlantic_ML
 .atlantic_ML\Scripts\activate
 ```
-2. **Abhängigkeiten installieren:**
+3. **Abhängigkeiten installieren:**
 ```bash
 pip install -r requirements.txt
 ```
