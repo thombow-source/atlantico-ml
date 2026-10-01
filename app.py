@@ -12,7 +12,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- DATEN & MODELL CACHEN ---lo
+# --- DATEN & MODELL CACHEN ---
+# -- Damit wird vermieden, das beim Reload der App im Browser
+# -- das ML-Modell neu geladen wird und die Dataframes berechnet
+# -- werden müssen. Dies geschieht, wie unten bei den Funktionen
+# -- einmalig je 'Server-Run'
 @st.cache_resource
 def load_pipeline():
     return joblib.load("segmentation_pipeline.pkl")
@@ -50,6 +54,7 @@ category_de = {
 }
 
 # --- PLOTLY-FUNKTIONEN CACHEN ---
+# -- einmalig je 'Server-Run'
 @st.cache_data
 def create_plotly_heatmap(_df, _spending_cols, _category_de):
     # Berechnung auf den Originalspalten
@@ -220,8 +225,9 @@ with tab2:
         scaled_input = pipeline["scaler"].transform(input_data)
         pca_input = pipeline["pca"].transform(scaled_input)
         cluster_pred = int(pipeline["kmeans"].predict(pca_input)[0])
-        
-        assigned_segment = cluster_names.get(cluster_pred, f"Cluster {cluster_pred}")
+
+        # das BR-Tag für die bessere Darstellung in den Plots müssen wir hier wieder löschen
+        assigned_segment = cluster_names.get(cluster_pred, f"Cluster {cluster_pred}").replace('<br>','')
 
         st.success(f"### Zuordnung: **{assigned_segment}**")
         st.info(f"**Gesamtausgabe des Kunden:** {input_data.sum(axis=1).values[0]:,.0f} €")
